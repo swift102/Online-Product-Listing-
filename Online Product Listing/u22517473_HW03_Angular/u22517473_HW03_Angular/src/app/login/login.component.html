@@ -1,0 +1,49 @@
+<!-- <div class="card w-50">
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">INF354 Assignment 3</span>
+    </div>
+  </nav>
+  <div class="card-body">
+    <h2>Login</h2>
+    <div class="login-container">
+      <form (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card w-50">
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">INF354 Assignment 3</span>
+    </div>
+  </nav>
+  <div class="card-body">
+    <h2>Login</h2>
+    <div class="login-container">
+      <form (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="username">Usernam:</label>
+          <input type="text" id="email" [(ngModel)]="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div>

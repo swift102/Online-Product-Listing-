@@ -1,0 +1,44 @@
+<div class="card w-50">
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">INF354 Assignment 3</span>
+    </div>
+  </nav>
+  <div class="card-body">
+
+<h2>Register</h2>
+<div class="register-container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="emailaddress">Email</label>
+      <input id="emailaddress" formControlName="emailaddress" type="email" />
+      <div *ngIf="submitted && f['emailaddress'].errors">
+        <small *ngIf="f['emailaddress'].errors['required']">Email is required.</small>
+        <small *ngIf="f['emailaddress'].errors['email']">Email is invalid.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" />
+      <div *ngIf="submitted && f['password'].errors">
+        <small *ngIf="f['password'].errors['required']">Password is required.</small>
+        <small *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters long.</small>
+      </div>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div *ngIf="successMessage">
+    <p>{{ successMessage }}</p>
+  </div>
+  <div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
+  </div>
+</div>
+
+
+

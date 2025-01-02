@@ -1,0 +1,105 @@
+<div class="container" fxLayout="row">
+  <!-- Sidebar -->
+   <div class="sidebar">
+      <nav class="navbar navbar-dark bg-primary">
+       <span class="navbar-brand mb-0 h1">INF354 Assignment 3</span>
+      </nav>
+     <div class="col-md-2">
+       <div class="list-group">
+        <a [routerLink]="'/product'" class="list-group-item list-group-item-action">Product Listing</a>
+        <a [routerLink]="'/Addpro'" class="list-group-item list-group-item-action">Add Product</a>
+        <a [routerLink]="['/chart']" class="list-group-item list-group-item-action">Product Reporting</a>
+        <a [routerLink]="['/login']" class="list-group-item list-group-item-action">Logout</a>
+      </div>
+   </div>
+
+   <div class="form-wrapper" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Add Product</mat-card-title>
+      </mat-card-header>
+      <form class="form" [formGroup]="productForm" (submit)="onSubmit()" enctype="multipart/form-data">
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter the Product Name" formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Price</mat-label>
+            <input type="number" step="0.01" matInput placeholder="Enter the Product Price" formControlName="price">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Brand</mat-label>
+            <mat-select formControlName="brand">
+              <mat-option *ngFor="let item of brandsData" [value]="item.brandId">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Product Type</mat-label>
+            <mat-select formControlName="producttype">
+              <mat-option *ngFor="let item of productTypesData" [value]="item.productTypeId">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Product Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <div class="file-upload">
+            <input formControlName="file" type="file" id="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+            <button mat-stroked-button color="primary" (click)="file.click()">Upload File</button>
+            <span *ngIf="fileNameUploaded.length > 0"> {{fileNameUploaded}}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" class="btn-block">Submit</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+  
+</div>
+
+<!-- 
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Add Product</mat-card-title>
+    </mat-card-header>
+    <form class="form" [formGroup]="productForm" (submit)="onSubmit()" enctype="multipart/form-data">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Enter the Product Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Price</mat-label>
+          <input type="number" step="0.01" matInput placeholder="Enter the Product Price" formControlName="price">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Brand</mat-label>
+          <mat-select formControlName="brand">
+            <mat-option *ngFor="let item of brandsData" [value]="item.brandId">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Product Type</mat-label>
+          <mat-select formControlName="producttype">
+            <mat-option *ngFor="let item of productTypesData" [value]="item.productTypeId">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Product Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <div class="file-upload">
+          <input formControlName="file" type="file" id="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+          <button mat-stroked-button color="primary" (click)="file.click()">Upload File</button>
+          <span *ngIf="fileNameUploaded.length > 0"> {{fileNameUploaded}}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" class="btn-block">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div> -->

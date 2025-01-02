@@ -1,0 +1,44 @@
+<!-- chart.component.html -->
+<div class="sidebar">
+  <nav class="navbar navbar-dark bg-primary">
+   <span class="navbar-brand mb-0 h1">INF354 Assignment 3</span>
+  </nav>
+ <div class="col-md-2">
+   <div class="list-group">
+    <a [routerLink]="'/product'" class="list-group-item list-group-item-action">Product Listing</a>
+    <a [routerLink]="'/Addpro'" class="list-group-item list-group-item-action">Add Product</a>
+    <a [routerLink]="['/chart']" class="list-group-item list-group-item-action">Product Reporting</a>
+    <a [routerLink]="['/login']" class="list-group-item list-group-item-action">Logout</a>
+  </div>
+</div>
+
+
+<div style="display: flex; justify-content: space-around;">
+  <div style="width: 45%;">
+    <canvas id="brandChart"></canvas>
+  </div>
+  <div style="width: 45%;">
+    <canvas id="productTypeChart"></canvas>
+  </div>
+</div>
+
+<div class="report">
+  <h2>Active Products Report</h2>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let brand of activeProducts">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ brand.brand }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let type of brand.productTypes">
+        <h3>{{ type.productType }}</h3>
+        <ul>
+          <li *ngFor="let product of type.products">
+            {{ product.name }} - {{ product.price | currency:'USD':'symbol' }}
+          </li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
